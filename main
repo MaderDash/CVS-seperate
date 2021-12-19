@@ -1,0 +1,20 @@
+void setup(){
+    Serial.begin(9600);
+    Serial.println("starting");
+    String mainString = "123,456,12,789,123";
+}
+void loop(){
+    if (Serial.available() >0){
+    String first  = Serial.readStringUntil(',');
+    Serial.read(); //next character is comma, so skip it using this
+    String second = Serial.readStringUntil(',');
+    Serial.read();
+    String third  = Serial.readStringUntil('\0');
+    //parse your data here. example:
+    //double x = Double.parseDouble(first);
+    int secondInt = second.toInt();
+    Serial.println(first.toInt());
+    Serial.println(secondInt);
+    Serial.println(third);
+    }
+}
