@@ -1,0 +1,55 @@
+
+// * is used as the data string delimiter
+// , is used to delimit individual data 
+
+String readString = "123,456,12,789"; //main captured String 
+String angle; //data String
+String fuel;
+String speed1;
+String altidude;
+
+int ind1; // , locations
+int ind2;
+int ind3;
+int ind4;
+
+void setup() {
+  Serial.begin(9600);
+  Serial.println("serial delimit test 11-12-13"); // so I can keep track of what is loaded
+}
+
+void loop() {
+
+      
+      Serial.println();
+      Serial.print("captured String is : "); 
+      Serial.println(readString); //prints string to serial port out
+      
+      ind1 = readString.indexOf(',');  //finds location of first ,
+      angle = readString.substring(0, ind1);   //captures first data String
+      ind2 = readString.indexOf(',', ind1+1 );   //finds location of second ,
+      fuel = readString.substring(ind1+1, ind2+1);   //captures second data String
+      ind3 = readString.indexOf(',', ind2+1 );
+      speed1 = readString.substring(ind2+1, ind3+1);
+      ind4 = readString.indexOf(',', ind3+1 );
+      altidude = readString.substring(ind3+1); //captures remain part of data after last ,
+      
+      Serial.print("angle = ");
+      Serial.println(angle); 
+      Serial.print("fuel = ");
+      Serial.println(fuel);
+      Serial.print("speed = ");
+      Serial.println(speed1);
+      Serial.print("altidude = ");
+      Serial.println(altidude);
+      Serial.println();
+      Serial.println();
+      
+      readString=""; //clears variable for new input
+      angle="";
+      fuel="";
+      speed1="";
+      altidude="";
+      while (1){}
+    }  
+    
